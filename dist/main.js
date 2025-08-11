@@ -35358,7 +35358,7 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
     const [mobileMenuOpen, setMobileMenuOpen] = (0, import_react9.useState)(false);
     const navItems = [
       { path: "/admin", icon: LayoutDashboard, label: "Dashboard", exact: true },
-      { path: "/admin/appointments", icon: Calendar, label: "Appointments" },
+      { path: "/admin/appointments", icon: Calendar, label: "\u0110\u1EB7t ch\u1ED7" },
       { path: "/admin/services", icon: Scissors, label: "D\u1ECBch v\u1EE5" },
       { path: "/admin/customers", icon: Users, label: "Kh\xE1ch h\xE0ng" },
       { path: "/admin/analytics", icon: ChartColumn, label: "Ph\xE2n t\xEDch" },
@@ -35449,10 +35449,10 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
   var import_jsx_runtime39 = __toESM(require_jsx_runtime());
   function AdminDashboard() {
     const stats = [
-      { title: "Today's Appointments", value: "12", icon: Calendar, change: "+2 from yesterday" },
-      { title: "Total Customers", value: "1,248", icon: Users, change: "+5% from last month" },
-      { title: "Avg. Service Time", value: "45min", icon: Clock, change: "-3min from last week" },
-      { title: "Revenue Today", value: "$1,890", icon: TrendingUp, change: "+12% from yesterday" }
+      { title: "Cu\u1ED9c h\u1EB9n h\xF4m nay", value: "12", icon: Calendar, change: "+2 t\u1EEB h\xF4m qua" },
+      { title: "T\u1ED5ng s\u1ED1 kh\xE1ch h\xE0ng", value: "1,248", icon: Users, change: "+5% t\u1EEB th\xE1ng tr\u01B0\u1EDBc" },
+      { title: "Th\u1EDDi gian ph\u1EE5c v\u1EE5 trung b\xECnh", value: "45min", icon: Clock, change: "-3min t\u1EEB tu\u1EA7n tr\u01B0\u1EDBc" },
+      { title: "Doanh thu h\xF4m nay", value: "$1,890", icon: TrendingUp, change: "+12% t\u1EEB h\xF4m qua" }
     ];
     const recentAppointments = [
       { id: 1, customer: "Sarah Johnson", service: "Hair Cut & Style", time: "9:00 AM", status: "confirmed" },

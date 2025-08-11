@@ -9,10 +9,10 @@ import { Badge } from '../../components/ui/badge'
 export default function AdminDashboard() {
   /** Sample data for demonstration */
   const stats = [
-    { title: 'Today\'s Appointments', value: '12', icon: Calendar, change: '+2 from yesterday' },
-    { title: 'Total Customers', value: '1,248', icon: Users, change: '+5% from last month' },
-    { title: 'Avg. Service Time', value: '45min', icon: Clock, change: '-3min from last week' },
-    { title: 'Revenue Today', value: '$1,890', icon: TrendingUp, change: '+12% from yesterday' }
+    { title: 'Cuộc hẹn hôm nay', value: '12', icon: Calendar, change: '+2 từ hôm qua' },
+    { title: 'Tổng số khách hàng', value: '1,248', icon: Users, change: '+5% từ tháng trước' },
+    { title: 'Thời gian phục vụ trung bình', value: '45min', icon: Clock, change: '-3min từ tuần trước' },
+    { title: 'Doanh thu hôm nay', value: '$1,890', icon: TrendingUp, change: '+12% từ hôm qua' }
   ]
 
   const recentAppointments = [
