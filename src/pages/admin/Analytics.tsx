@@ -1,34 +1,34 @@
 /**
- * Admin Analytics - Business insights and performance metrics
+ * Phân tích quản trị - Thông tin và chỉ số hiệu suất kinh doanh
  */
 import { TrendingUp, Calendar, DollarSign, Users, Clock, Star } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs'
 
 export default function AdminAnalytics() {
-  /** Sample analytics data */
+  /** Dữ liệu mẫu */
   const revenueData = [
-    { month: 'Jan', revenue: 4500, appointments: 45 },
-    { month: 'Feb', revenue: 5200, appointments: 52 },
-    { month: 'Mar', revenue: 4800, appointments: 48 },
-    { month: 'Apr', revenue: 6100, appointments: 61 },
-    { month: 'May', revenue: 5900, appointments: 59 },
-    { month: 'Jun', revenue: 7200, appointments: 72 }
+    { month: 'Th1', revenue: 4500, appointments: 45 },
+    { month: 'Th2', revenue: 5200, appointments: 52 },
+    { month: 'Th3', revenue: 4800, appointments: 48 },
+    { month: 'Th4', revenue: 6100, appointments: 61 },
+    { month: 'Th5', revenue: 5900, appointments: 59 },
+    { month: 'Th6', revenue: 7200, appointments: 72 }
   ]
 
   const topServices = [
-    { name: 'Hair Cut & Style', bookings: 28, revenue: 2380 },
-    { name: 'Hair Color', bookings: 15, revenue: 1800 },
-    { name: 'Massage Therapy', bookings: 12, revenue: 900 },
-    { name: 'Beard Trim', bookings: 18, revenue: 630 }
+    { name: 'Cắt & tạo kiểu tóc', bookings: 28, revenue: 2380 },
+    { name: 'Nhuộm tóc', bookings: 15, revenue: 1800 },
+    { name: 'Massage trị liệu', bookings: 12, revenue: 900 },
+    { name: 'Tỉa râu', bookings: 18, revenue: 630 }
   ]
 
   return (
     <div className="p-4 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Analytics</h1>
-        <p className="text-gray-600">Track your business performance and insights</p>
+        <h1 className="text-2xl font-bold text-gray-900">Phân tích</h1>
+        <p className="text-gray-600">Theo dõi hiệu suất và thông tin kinh doanh của bạn</p>
       </div>
 
       {/* Key Metrics */}
@@ -36,52 +36,52 @@ export default function AdminAnalytics() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">
-              Monthly Revenue
+              Doanh thu tháng
             </CardTitle>
             <DollarSign className="h-4 w-4 text-gray-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">$7,200</div>
-            <p className="text-xs text-green-600 mt-1">+22% from last month</p>
+            <div className="text-2xl font-bold text-gray-900">7.200₫</div>
+            <p className="text-xs text-green-600 mt-1">+22% so với tháng trước</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">
-              Total Appointments
+              Tổng số lịch hẹn
             </CardTitle>
             <Calendar className="h-4 w-4 text-gray-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-gray-900">72</div>
-            <p className="text-xs text-green-600 mt-1">+18% from last month</p>
+            <p className="text-xs text-green-600 mt-1">+18% so với tháng trước</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">
-              Avg. Service Time
+              Thời gian phục vụ TB
             </CardTitle>
             <Clock className="h-4 w-4 text-gray-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">58min</div>
-            <p className="text-xs text-red-600 mt-1">+3min from last month</p>
+            <div className="text-2xl font-bold text-gray-900">58 phút</div>
+            <p className="text-xs text-red-600 mt-1">+3 phút so với tháng trước</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">
-              Customer Rating
+              Đánh giá khách hàng
             </CardTitle>
             <Star className="h-4 w-4 text-gray-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-gray-900">4.8</div>
-            <p className="text-xs text-green-600 mt-1">+0.2 from last month</p>
+            <p className="text-xs text-green-600 mt-1">+0.2 so với tháng trước</p>
           </CardContent>
         </Card>
       </div>
@@ -89,16 +89,16 @@ export default function AdminAnalytics() {
       {/* Analytics Tabs */}
       <Tabs defaultValue="revenue" className="space-y-4">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="revenue">Revenue</TabsTrigger>
-          <TabsTrigger value="services">Services</TabsTrigger>
-          <TabsTrigger value="customers">Customers</TabsTrigger>
+          <TabsTrigger value="revenue">Doanh thu</TabsTrigger>
+          <TabsTrigger value="services">Dịch vụ</TabsTrigger>
+          <TabsTrigger value="customers">Khách hàng</TabsTrigger>
         </TabsList>
 
         <TabsContent value="revenue" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Revenue Trend</CardTitle>
-              <CardDescription>Monthly revenue and appointment count over time</CardDescription>
+              <CardTitle>Xu hướng doanh thu</CardTitle>
+              <CardDescription>Doanh thu hàng tháng và số lượng lịch hẹn theo thời gian</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -110,12 +110,12 @@ export default function AdminAnalytics() {
                       </div>
                       <div>
                         <p className="font-medium text-gray-900">{data.month} 2024</p>
-                        <p className="text-sm text-gray-600">{data.appointments} appointments</p>
+                        <p className="text-sm text-gray-600">{data.appointments} lịch hẹn</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-lg font-semibold text-green-600">${data.revenue.toLocaleString()}</div>
-                      <div className="text-sm text-gray-500">${(data.revenue / data.appointments).toFixed(0)} avg</div>
+                      <div className="text-lg font-semibold text-green-600">{data.revenue.toLocaleString()}₫</div>
+                      <div className="text-sm text-gray-500">{Math.round(data.revenue / data.appointments)}₫ TB</div>
                     </div>
                   </div>
                 ))}
@@ -127,8 +127,8 @@ export default function AdminAnalytics() {
         <TabsContent value="services" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Top Performing Services</CardTitle>
-              <CardDescription>Most popular services by bookings and revenue</CardDescription>
+              <CardTitle>Dịch vụ nổi bật</CardTitle>
+              <CardDescription>Dịch vụ phổ biến nhất theo số lượng đặt và doanh thu</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -140,12 +140,12 @@ export default function AdminAnalytics() {
                       </div>
                       <div>
                         <p className="font-medium text-gray-900">{service.name}</p>
-                        <p className="text-sm text-gray-600">{service.bookings} bookings this month</p>
+                        <p className="text-sm text-gray-600">{service.bookings} lượt đặt tháng này</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-lg font-semibold text-green-600">${service.revenue.toLocaleString()}</div>
-                      <div className="text-sm text-gray-500">${(service.revenue / service.bookings).toFixed(0)} avg</div>
+                      <div className="text-lg font-semibold text-green-600">{service.revenue.toLocaleString()}₫</div>
+                      <div className="text-sm text-gray-500">{Math.round(service.revenue / service.bookings)}₫ TB</div>
                     </div>
                   </div>
                 ))}
@@ -157,8 +157,8 @@ export default function AdminAnalytics() {
         <TabsContent value="customers" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Customer Insights</CardTitle>
-              <CardDescription>Customer behavior and retention metrics</CardDescription>
+              <CardTitle>Thông tin khách hàng</CardTitle>
+              <CardDescription>Hành vi khách hàng và chỉ số giữ chân</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -166,24 +166,24 @@ export default function AdminAnalytics() {
                   <div className="text-center p-6 border rounded-lg">
                     <Users className="h-8 w-8 text-blue-600 mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">248</div>
-                    <div className="text-sm text-gray-600">Total Customers</div>
+                    <div className="text-sm text-gray-600">Tổng khách hàng</div>
                   </div>
                   <div className="text-center p-6 border rounded-lg">
                     <TrendingUp className="h-8 w-8 text-green-600 mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">68%</div>
-                    <div className="text-sm text-gray-600">Return Rate</div>
+                    <div className="text-sm text-gray-600">Tỷ lệ quay lại</div>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="text-center p-6 border rounded-lg">
                     <Calendar className="h-8 w-8 text-purple-600 mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">2.9</div>
-                    <div className="text-sm text-gray-600">Avg Visits/Customer</div>
+                    <div className="text-sm text-gray-600">TB lượt đến/khách</div>
                   </div>
                   <div className="text-center p-6 border rounded-lg">
                     <DollarSign className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-gray-900">$182</div>
-                    <div className="text-sm text-gray-600">Avg Customer Value</div>
+                    <div className="text-2xl font-bold text-gray-900">182₫</div>
+                    <div className="text-sm text-gray-600">Giá trị TB/khách</div>
                   </div>
                 </div>
               </div>

@@ -28,11 +28,11 @@ export default function AdminDashboard() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600">Welcome back! Here's what's happening today.</p>
+          <p className="text-gray-600">Chào mừng trở lại! Đây là những gì đang diễn ra hôm nay.</p>
         </div>
         <Button className="w-full sm:w-auto">
           <Phone className="h-4 w-4 mr-2" />
-          Quick Call
+          Gọi nhanh
         </Button>
       </div>
 
@@ -57,8 +57,8 @@ export default function AdminDashboard() {
       {/* Recent Appointments */}
       <Card>
         <CardHeader>
-          <CardTitle>Today's Appointments</CardTitle>
-          <CardDescription>Manage your schedule and track appointments</CardDescription>
+          <CardTitle>Cuộc hẹn hôm nay</CardTitle>
+          <CardDescription>Quản lý lịch trình và theo dõi các cuộc hẹn</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {recentAppointments.map((appointment) => (
@@ -87,7 +87,7 @@ export default function AdminDashboard() {
             </div>
           ))}
           <Button variant="outline" className="w-full">
-            View All Appointments
+            Xem tất cả các cuộc hẹn
           </Button>
         </CardContent>
       </Card>
@@ -97,24 +97,24 @@ export default function AdminDashboard() {
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="p-6 text-center">
             <Calendar className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">New Appointment</h3>
-            <p className="text-sm text-gray-600">Schedule a new appointment for a customer</p>
+            <h3 className="font-semibold text-gray-900 mb-2">Cuộc hẹn mới</h3>
+            <p className="text-sm text-gray-600">Lên lịch cuộc hẹn mới cho khách hàng</p>
           </CardContent>
         </Card>
         
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="p-6 text-center">
             <Users className="h-8 w-8 text-green-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Add Customer</h3>
-            <p className="text-sm text-gray-600">Register a new customer profile</p>
+            <h3 className="font-semibold text-gray-900 mb-2">Thêm khách hàng</h3>
+            <p className="text-sm text-gray-600">Đăng ký hồ sơ khách hàng mới</p>
           </CardContent>
         </Card>
         
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="p-6 text-center">
             <CheckCircle className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Complete Service</h3>
-            <p className="text-sm text-gray-600">Mark an appointment as completed</p>
+            <h3 className="font-semibold text-gray-900 mb-2">Dịch vụ hoàn chỉnh</h3>
+            <p className="text-sm text-gray-600">Đánh dấu cuộc hẹn là đã hoàn thành</p>
           </CardContent>
         </Card>
       </div>

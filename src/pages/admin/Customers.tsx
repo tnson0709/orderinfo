@@ -86,12 +86,12 @@ export default function AdminCustomers() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Customers</h1>
-          <p className="text-gray-600">Manage your customer relationships and history</p>
+          <h1 className="text-2xl font-bold text-gray-900">Khách hàng</h1>
+          <p className="text-gray-600">Quản lý mối quan hệ và lịch sử khách hàng của bạn</p>
         </div>
         <Button className="w-full sm:w-auto">
           <Plus className="h-4 w-4 mr-2" />
-          Add Customer
+          Thêm Khách hàng
         </Button>
       </div>
 
@@ -101,7 +101,7 @@ export default function AdminCustomers() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
-              placeholder="Search customers by name, email, or phone..."
+              placeholder="Tìm kiếm khách hàng theo tên, email hoặc số điện thoại..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -118,7 +118,7 @@ export default function AdminCustomers() {
               <User className="h-5 w-5 text-blue-600" />
               <div>
                 <div className="text-2xl font-bold text-gray-900">{customers.length}</div>
-                <div className="text-sm text-gray-600">Total Customers</div>
+                <div className="text-sm text-gray-600">Tổng Khách hàng</div>
               </div>
             </div>
           </CardContent>
@@ -127,12 +127,12 @@ export default function AdminCustomers() {
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center space-x-2">
-              <Badge variant="default" className="text-xs">Active</Badge>
+              <Badge variant="default" className="text-xs">Hoạt động</Badge>
               <div>
                 <div className="text-2xl font-bold text-gray-900">
                   {customers.filter(c => c.status === 'active').length}
                 </div>
-                <div className="text-sm text-gray-600">Active Customers</div>
+                <div className="text-sm text-gray-600">Khách hàng đang hoạt động</div>
               </div>
             </div>
           </CardContent>
@@ -146,7 +146,7 @@ export default function AdminCustomers() {
                 <div className="text-2xl font-bold text-gray-900">
                   {customers.filter(c => c.status === 'vip').length}
                 </div>
-                <div className="text-sm text-gray-600">VIP Customers</div>
+                <div className="text-sm text-gray-600">Khách hàng VIP</div>
               </div>
             </div>
           </CardContent>
@@ -158,7 +158,7 @@ export default function AdminCustomers() {
               <Calendar className="h-5 w-5 text-green-600" />
               <div>
                 <div className="text-2xl font-bold text-gray-900">38</div>
-                <div className="text-sm text-gray-600">Total Appointments</div>
+                <div className="text-sm text-gray-600">Tổng số cuộc hẹn</div>
               </div>
             </div>
           </CardContent>
@@ -199,13 +199,13 @@ export default function AdminCustomers() {
                 
                 <div className="text-right space-y-1">
                   <div className="text-sm font-medium text-gray-900">
-                    {customer.totalAppointments} appointments
+                    {customer.totalAppointments} cuộc hẹn
                   </div>
                   <div className="text-sm font-semibold text-green-600">
-                    ${customer.totalSpent} total
+                    ${customer.totalSpent} tổng
                   </div>
                   <div className="text-xs text-gray-500">
-                    Last visit: {new Date(customer.lastVisit).toLocaleDateString()}
+                    Lần ghé thăm cuối cùng: {new Date(customer.lastVisit).toLocaleDateString()}
                   </div>
                 </div>
               </div>
@@ -213,7 +213,7 @@ export default function AdminCustomers() {
               <div className="flex items-center space-x-2 mt-4 pt-4 border-t">
                 <Button variant="outline" size="sm">
                   <Phone className="h-4 w-4 mr-2" />
-                  Call
+                  SĐT
                 </Button>
                 <Button variant="outline" size="sm">
                   <Mail className="h-4 w-4 mr-2" />
@@ -221,7 +221,7 @@ export default function AdminCustomers() {
                 </Button>
                 <Button variant="outline" size="sm">
                   <Calendar className="h-4 w-4 mr-2" />
-                  Schedule
+                  Lịch trình
                 </Button>
               </div>
             </CardContent>

@@ -1,6 +1,6 @@
 /**
- * User App booking page component
- * Service booking flow with date/time selection and confirmation
+ * Trang đặt lịch ứng dụng Người dùng
+ * Quy trình đặt dịch vụ với chọn ngày/giờ và xác nhận
  */
 import { useState } from 'react'
 import { useParams, Link } from 'react-router'
@@ -17,32 +17,32 @@ export default function BookingPage() {
   const { serviceId } = useParams()
   const [selectedDate, setSelectedDate] = useState('')
   const [selectedTime, setSelectedTime] = useState('')
-  const [step, setStep] = useState(1) // 1: DateTime, 2: Details, 3: Confirmation
+  const [step, setStep] = useState(1) // 1: Ngày giờ, 2: Thông tin, 3: Xác nhận
 
-  /** Sample service data */
+  /** Dữ liệu mẫu dịch vụ */
   const service = {
     id: 1,
-    name: 'Hair Cut & Style',
-    description: 'Professional haircut with styling and finish',
+    name: 'Cắt & tạo kiểu tóc',
+    description: 'Cắt tóc chuyên nghiệp, tạo kiểu và hoàn thiện',
     price: 85,
     duration: 60,
     image: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/29324b32-a272-4542-9d19-679f33e876da.jpg'
   }
 
-  /** Available time slots */
+  /** Khung giờ có sẵn */
   const timeSlots = [
-    '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
-    '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM',
-    '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM'
+    '9:00', '9:30', '10:00', '10:30', '11:00', '11:30',
+    '13:00', '13:30', '14:00', '14:30', '15:00', '15:30',
+    '16:00', '16:30', '17:00', '17:30'
   ]
 
-  /** Available dates (next 14 days) */
+  /** Ngày có sẵn (14 ngày tiếp theo) */
   const availableDates = Array.from({ length: 14 }, (_, i) => {
     const date = new Date()
     date.setDate(date.getDate() + i + 1)
     return {
       date: date.toISOString().split('T')[0],
-      display: date.toLocaleDateString('en-US', { 
+      display: date.toLocaleDateString('vi-VN', { 
         weekday: 'short', 
         month: 'short', 
         day: 'numeric' 
@@ -51,8 +51,8 @@ export default function BookingPage() {
   })
 
   const handleBooking = () => {
-    // Handle booking submission
-    console.log('Booking confirmed:', { serviceId, selectedDate, selectedTime })
+    // Xử lý đặt lịch
+    console.log('Đã xác nhận đặt lịch:', { serviceId, selectedDate, selectedTime })
   }
 
   return (
@@ -65,8 +65,8 @@ export default function BookingPage() {
           </Button>
         </Link>
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Book Appointment</h1>
-          <p className="text-sm text-gray-600">Step {step} of 3</p>
+          <h1 className="text-xl font-bold text-gray-900">Đặt lịch hẹn</h1>
+          <p className="text-sm text-gray-600">Bước {step} / 3</p>
         </div>
       </div>
 
@@ -108,9 +108,9 @@ export default function BookingPage() {
               <div className="flex items-center gap-4 text-sm text-gray-500">
                 <span className="flex items-center">
                   <Clock className="w-4 h-4 mr-1" />
-                  {service.duration} min
+                  {service.duration} phút
                 </span>
-                <span className="font-semibold text-green-600">${service.price}</span>
+                <span className="font-semibold text-green-600">{service.price}₫</span>
               </div>
             </div>
           </div>
@@ -124,7 +124,7 @@ export default function BookingPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
-                Select Date
+                Chọn ngày
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -151,7 +151,7 @@ export default function BookingPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Clock className="w-5 h-5" />
-                  Select Time
+                  Chọn giờ
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -179,7 +179,7 @@ export default function BookingPage() {
             disabled={!selectedDate || !selectedTime}
             className="w-full"
           >
-            Continue to Details
+            Tiếp tục nhập thông tin
           </Button>
         </div>
       )}
@@ -191,18 +191,18 @@ export default function BookingPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <User className="w-5 h-5" />
-                Personal Information
+                Thông tin cá nhân
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input id="firstName" placeholder="John" defaultValue="Sarah" />
+                  <Label htmlFor="firstName">Họ</Label>
+                  <Input id="firstName" placeholder="Nhập họ" defaultValue="" />
                 </div>
                 <div>
-                  <Label htmlFor="lastName">Last Name</Label>
-                  <Input id="lastName" placeholder="Doe" defaultValue="Johnson" />
+                  <Label htmlFor="lastName">Tên</Label>
+                  <Input id="lastName" placeholder="Nhập tên" defaultValue="" />
                 </div>
               </div>
               <div>
@@ -210,24 +210,24 @@ export default function BookingPage() {
                 <Input 
                   id="email" 
                   type="email" 
-                  placeholder="john@example.com"
-                  defaultValue="sarah.johnson@email.com"
+                  placeholder="Nhập email"
+                  defaultValue=""
                 />
               </div>
               <div>
-                <Label htmlFor="phone">Phone Number</Label>
+                <Label htmlFor="phone">Số điện thoại</Label>
                 <Input 
                   id="phone" 
                   type="tel" 
-                  placeholder="+1 (555) 123-4567"
-                  defaultValue="+1 (555) 123-4567"
+                  placeholder="Nhập số điện thoại"
+                  defaultValue=""
                 />
               </div>
               <div>
-                <Label htmlFor="notes">Special Requests (Optional)</Label>
+                <Label htmlFor="notes">Yêu cầu đặc biệt (Không bắt buộc)</Label>
                 <Textarea 
                   id="notes" 
-                  placeholder="Any special requests or notes..."
+                  placeholder="Ghi chú hoặc yêu cầu đặc biệt..."
                   rows={3}
                 />
               </div>
@@ -240,13 +240,13 @@ export default function BookingPage() {
               onClick={() => setStep(1)}
               className="flex-1"
             >
-              Back
+              Quay lại
             </Button>
             <Button 
               onClick={() => setStep(3)}
               className="flex-1"
             >
-              Review Booking
+              Xem lại đặt lịch
             </Button>
           </div>
         </div>
@@ -257,30 +257,30 @@ export default function BookingPage() {
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Booking Summary</CardTitle>
+              <CardTitle>Tóm tắt đặt lịch</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between py-2 border-b">
-                <span className="text-gray-600">Service</span>
+                <span className="text-gray-600">Dịch vụ</span>
                 <span className="font-medium">{service.name}</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b">
-                <span className="text-gray-600">Date</span>
+                <span className="text-gray-600">Ngày</span>
                 <span className="font-medium">
                   {availableDates.find(d => d.date === selectedDate)?.display}
                 </span>
               </div>
               <div className="flex items-center justify-between py-2 border-b">
-                <span className="text-gray-600">Time</span>
+                <span className="text-gray-600">Giờ</span>
                 <span className="font-medium">{selectedTime}</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b">
-                <span className="text-gray-600">Duration</span>
-                <span className="font-medium">{service.duration} minutes</span>
+                <span className="text-gray-600">Thời lượng</span>
+                <span className="font-medium">{service.duration} phút</span>
               </div>
               <div className="flex items-center justify-between py-2 text-lg font-semibold">
-                <span>Total</span>
-                <span className="text-green-600">${service.price}</span>
+                <span>Tổng cộng</span>
+                <span className="text-green-600">{service.price}₫</span>
               </div>
             </CardContent>
           </Card>
@@ -289,15 +289,15 @@ export default function BookingPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <CreditCard className="w-5 h-5" />
-                Payment Method
+                Phương thức thanh toán
               </CardTitle>
             </CardHeader>
             <CardContent>
               <RadioGroup defaultValue="card" className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="card" id="card" />
-                  <Label htmlFor="card" className="flex-1">Pay with Card</Label>
-                  <Badge variant="outline">Recommended</Badge>
+                  <Label htmlFor="card" className="flex-1">Thanh toán bằng thẻ</Label>
+                  <Badge variant="outline">Khuyên dùng</Badge>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="paypal" id="paypal" />
@@ -305,7 +305,7 @@ export default function BookingPage() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="cash" id="cash" />
-                  <Label htmlFor="cash">Pay at Location</Label>
+                  <Label htmlFor="cash">Thanh toán tại cửa hàng</Label>
                 </div>
               </RadioGroup>
             </CardContent>
@@ -317,14 +317,14 @@ export default function BookingPage() {
               onClick={() => setStep(2)}
               className="flex-1"
             >
-              Back
+              Quay lại
             </Button>
             <Link to="/user/appointments" className="flex-1">
               <Button 
                 onClick={handleBooking}
                 className="w-full"
               >
-                Confirm Booking
+                Xác nhận đặt lịch
               </Button>
             </Link>
           </div>

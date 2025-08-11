@@ -1,6 +1,6 @@
 /**
- * User App profile page component
- * User profile management with personal info, preferences, and settings
+ * Trang hồ sơ người dùng
+ * Quản lý thông tin cá nhân, sở thích và cài đặt
  */
 import { useState } from 'react'
 import { User, Phone, Mail, MapPin, Bell, CreditCard, Gift, Settings, LogOut, Edit } from 'lucide-react'
@@ -20,24 +20,24 @@ export default function ProfilePage() {
     reminders: true
   })
 
-  /** Sample user data */
+  /** Dữ liệu mẫu người dùng */
   const user = {
     name: 'Sarah Johnson',
     email: 'sarah.johnson@email.com',
     phone: '+1 (555) 123-4567',
     address: '456 Oak Street, Downtown, NY 10001',
-    joinDate: 'January 15, 2024',
+    joinDate: '15/01/2024',
     loyaltyPoints: 2340,
     totalAppointments: 8,
     totalSpent: 680,
-    membershipTier: 'Gold',
+    membershipTier: 'Vàng',
     avatar: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/149f1176-1954-4f4d-9046-eb111af0214a.jpg'
   }
 
   const favoriteServices = [
-    { name: 'Hair Cut & Style', count: 3, lastBooked: '1 week ago' },
-    { name: 'Facial Treatment', count: 2, lastBooked: '2 weeks ago' },
-    { name: 'Massage Therapy', count: 1, lastBooked: '1 month ago' }
+    { name: 'Cắt & tạo kiểu tóc', count: 3, lastBooked: '1 tuần trước' },
+    { name: 'Chăm sóc da mặt', count: 2, lastBooked: '2 tuần trước' },
+    { name: 'Massage trị liệu', count: 1, lastBooked: '1 tháng trước' }
   ]
 
   return (
@@ -58,11 +58,11 @@ export default function ProfilePage() {
                   {user.membershipTier}
                 </Badge>
               </div>
-              <p className="text-gray-600 mb-2">Member since {user.joinDate}</p>
+              <p className="text-gray-600 mb-2">Thành viên từ {user.joinDate}</p>
               <div className="flex items-center gap-4 text-sm text-gray-500">
-                <span>{user.totalAppointments} appointments</span>
-                <span>${user.totalSpent} spent</span>
-                <span>{user.loyaltyPoints} points</span>
+                <span>{user.totalAppointments} lịch hẹn</span>
+                <span>{user.totalSpent}₫ đã chi tiêu</span>
+                <span>{user.loyaltyPoints} điểm</span>
               </div>
             </div>
             <Button
@@ -71,7 +71,7 @@ export default function ProfilePage() {
               onClick={() => setIsEditing(!isEditing)}
             >
               <Edit className="w-4 h-4 mr-2" />
-              {isEditing ? 'Save' : 'Edit'}
+              {isEditing ? 'Lưu' : 'Chỉnh sửa'}
             </Button>
           </div>
         </CardContent>
@@ -82,14 +82,14 @@ export default function ProfilePage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Gift className="w-5 h-5 text-purple-600" />
-            Loyalty Rewards
+            Điểm thưởng thành viên
           </CardTitle>
-          <CardDescription>Earn points with every appointment</CardDescription>
+          <CardDescription>Nhận điểm khi đặt lịch hẹn</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-gray-600">Current Points</span>
+              <span className="text-gray-600">Điểm hiện tại</span>
               <span className="text-2xl font-bold text-purple-600">{user.loyaltyPoints}</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
@@ -99,11 +99,11 @@ export default function ProfilePage() {
               />
             </div>
             <div className="flex justify-between text-sm text-gray-500">
-              <span>Gold Member</span>
-              <span>{1000 - (user.loyaltyPoints % 1000)} points to Platinum</span>
+              <span>Thành viên Vàng</span>
+              <span>Còn {1000 - (user.loyaltyPoints % 1000)} điểm để lên Bạch Kim</span>
             </div>
             <Button variant="outline" className="w-full">
-              Redeem Points
+              Đổi điểm thưởng
             </Button>
           </div>
         </CardContent>
@@ -114,17 +114,18 @@ export default function ProfilePage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <User className="w-5 h-5" />
-            Personal Information
+            Thông tin cá nhân
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <Label htmlFor="name">Full Name</Label>
+              <Label htmlFor="name">Họ và tên</Label>
               <Input
                 id="name"
                 defaultValue={user.name}
                 disabled={!isEditing}
+                placeholder="Nhập họ và tên"
               />
             </div>
             <div>
@@ -134,23 +135,26 @@ export default function ProfilePage() {
                 type="email"
                 defaultValue={user.email}
                 disabled={!isEditing}
+                placeholder="Nhập email"
               />
             </div>
             <div>
-              <Label htmlFor="phone">Phone Number</Label>
+              <Label htmlFor="phone">Số điện thoại</Label>
               <Input
                 id="phone"
                 type="tel"
                 defaultValue={user.phone}
                 disabled={!isEditing}
+                placeholder="Nhập số điện thoại"
               />
             </div>
             <div>
-              <Label htmlFor="address">Address</Label>
+              <Label htmlFor="address">Địa chỉ</Label>
               <Input
                 id="address"
                 defaultValue={user.address}
                 disabled={!isEditing}
+                placeholder="Nhập địa chỉ"
               />
             </div>
           </div>
@@ -160,8 +164,8 @@ export default function ProfilePage() {
       {/* Favorite Services */}
       <Card>
         <CardHeader>
-          <CardTitle>Favorite Services</CardTitle>
-          <CardDescription>Services you book most often</CardDescription>
+          <CardTitle>Dịch vụ yêu thích</CardTitle>
+          <CardDescription>Những dịch vụ bạn đặt nhiều nhất</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -170,11 +174,11 @@ export default function ProfilePage() {
                 <div className="flex-1">
                   <h4 className="font-medium text-gray-900">{service.name}</h4>
                   <p className="text-sm text-gray-600">
-                    Booked {service.count} times • Last: {service.lastBooked}
+                    Đã đặt {service.count} lần • Lần gần nhất: {service.lastBooked}
                   </p>
                 </div>
                 <Button variant="outline" size="sm">
-                  Book Again
+                  Đặt lại
                 </Button>
               </div>
             ))}
@@ -187,14 +191,14 @@ export default function ProfilePage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Bell className="w-5 h-5" />
-            Notifications
+            Thông báo
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <Label htmlFor="appointment-notifications">Appointment Reminders</Label>
-              <p className="text-sm text-gray-600">Get notified about upcoming appointments</p>
+              <Label htmlFor="appointment-notifications">Nhắc lịch hẹn</Label>
+              <p className="text-sm text-gray-600">Nhận thông báo về lịch hẹn sắp tới</p>
             </div>
             <Switch
               id="appointment-notifications"
@@ -207,8 +211,8 @@ export default function ProfilePage() {
           <Separator />
           <div className="flex items-center justify-between">
             <div>
-              <Label htmlFor="promotion-notifications">Promotions & Offers</Label>
-              <p className="text-sm text-gray-600">Receive special offers and discounts</p>
+              <Label htmlFor="promotion-notifications">Khuyến mãi & Ưu đãi</Label>
+              <p className="text-sm text-gray-600">Nhận thông tin ưu đãi và giảm giá</p>
             </div>
             <Switch
               id="promotion-notifications"
@@ -221,8 +225,8 @@ export default function ProfilePage() {
           <Separator />
           <div className="flex items-center justify-between">
             <div>
-              <Label htmlFor="reminder-notifications">Booking Reminders</Label>
-              <p className="text-sm text-gray-600">Reminders to book your next appointment</p>
+              <Label htmlFor="reminder-notifications">Nhắc đặt lịch</Label>
+              <p className="text-sm text-gray-600">Nhắc bạn đặt lịch hẹn tiếp theo</p>
             </div>
             <Switch
               id="reminder-notifications"
@@ -240,7 +244,7 @@ export default function ProfilePage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <CreditCard className="w-5 h-5" />
-            Payment Methods
+            Phương thức thanh toán
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -251,13 +255,13 @@ export default function ProfilePage() {
               </div>
               <div>
                 <p className="font-medium">•••• •••• •••• 4242</p>
-                <p className="text-sm text-gray-600">Expires 12/26</p>
+                <p className="text-sm text-gray-600">Hết hạn 12/26</p>
               </div>
             </div>
-            <Badge variant="outline">Default</Badge>
+            <Badge variant="outline">Mặc định</Badge>
           </div>
           <Button variant="outline" className="w-full">
-            Add Payment Method
+            Thêm phương thức thanh toán
           </Button>
         </CardContent>
       </Card>
@@ -267,26 +271,26 @@ export default function ProfilePage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Settings className="w-5 h-5" />
-            Account Settings
+            Cài đặt tài khoản
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <Button variant="outline" className="w-full justify-start">
             <Settings className="w-4 h-4 mr-2" />
-            Privacy Settings
+            Quyền riêng tư
           </Button>
           <Button variant="outline" className="w-full justify-start">
             <Bell className="w-4 h-4 mr-2" />
-            Notification Preferences
+            Cài đặt thông báo
           </Button>
           <Button variant="outline" className="w-full justify-start">
             <Gift className="w-4 h-4 mr-2" />
-            Referral Program
+            Chương trình giới thiệu
           </Button>
           <Separator />
           <Button variant="outline" className="w-full justify-start text-red-600 hover:text-red-700">
             <LogOut className="w-4 h-4 mr-2" />
-            Sign Out
+            Đăng xuất
           </Button>
         </CardContent>
       </Card>

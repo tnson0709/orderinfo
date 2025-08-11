@@ -25,6 +25,7 @@ export default function AdminAppointments() {
       time: '9:00 AM',
       duration: '60 min',
       status: 'confirmed',
+      statusname: 'Đã xác nhận',
       price: 85,
       avatar: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/39326288-a727-414c-9efc-b615e83cbeff.jpg'
     },
@@ -37,6 +38,7 @@ export default function AdminAppointments() {
       time: '10:30 AM',
       duration: '30 min',
       status: 'in-progress',
+      statusname: 'Đang xử lý',
       price: 35,
       avatar: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/a79d0519-26d2-4a8d-b9aa-3977f77a006b.jpg'
     },
@@ -49,6 +51,7 @@ export default function AdminAppointments() {
       time: '11:00 AM',
       duration: '90 min',
       status: 'confirmed',
+      statusname: 'Đã xác nhận',
       price: 120,
       avatar: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/2c6f1d1d-0876-4939-aef7-7333d1f16cdf.jpg'
     },
@@ -61,6 +64,7 @@ export default function AdminAppointments() {
       time: '2:00 PM',
       duration: '45 min',
       status: 'pending',
+      statusname: 'Chờ',
       price: 75,
       avatar: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/dfb00167-32bd-4c98-beec-ffc74e9355b6.jpg'
     }
@@ -90,12 +94,12 @@ export default function AdminAppointments() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Appointments</h1>
-          <p className="text-gray-600">Manage and track all your appointments</p>
+          <h1 className="text-2xl font-bold text-gray-900">Cuộc hẹn</h1>
+          <p className="text-gray-600">Quản lý và theo dõi tất cả các cuộc hẹn của bạn</p>
         </div>
         <Button className="w-full sm:w-auto">
           <Plus className="h-4 w-4 mr-2" />
-          New Appointment
+          Cuộc hẹn mới
         </Button>
       </div>
 
@@ -106,7 +110,7 @@ export default function AdminAppointments() {
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
-                placeholder="Search appointments..."
+                placeholder="Tìm kiếm Cuộc hẹn..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -115,15 +119,15 @@ export default function AdminAppointments() {
             <Select value={selectedStatus} onValueChange={setSelectedStatus}>
               <SelectTrigger className="w-full sm:w-48">
                 <Filter className="h-4 w-4 mr-2" />
-                <SelectValue placeholder="Filter by status" />
+                <SelectValue placeholder="Lọc theo trạng thái" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="pending">Pending</SelectItem>
-                <SelectItem value="confirmed">Confirmed</SelectItem>
-                <SelectItem value="in-progress">In Progress</SelectItem>
-                <SelectItem value="completed">Completed</SelectItem>
-                <SelectItem value="cancelled">Cancelled</SelectItem>
+                <SelectItem value="all">Tất cả</SelectItem>
+                <SelectItem value="pending">Chờ</SelectItem>
+                <SelectItem value="confirmed">Đã xác nhận</SelectItem>
+                <SelectItem value="in-progress">Đang xử lý</SelectItem>
+                <SelectItem value="completed">Hoàn thành</SelectItem>
+                <SelectItem value="cancelled">Hủy hẹn</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -133,9 +137,9 @@ export default function AdminAppointments() {
       {/* Appointments Tabs */}
       <Tabs defaultValue="today" className="space-y-4">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="today">Today</TabsTrigger>
-          <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
-          <TabsTrigger value="past">Past</TabsTrigger>
+          <TabsTrigger value="today">Hôm nay</TabsTrigger>
+          <TabsTrigger value="upcoming">Sắp tới</TabsTrigger>
+          <TabsTrigger value="past">Quá khứ</TabsTrigger>
         </TabsList>
 
         <TabsContent value="today" className="space-y-4">
@@ -153,7 +157,7 @@ export default function AdminAppointments() {
                       <div className="flex items-center space-x-2 mb-1">
                         <h3 className="font-semibold text-gray-900">{appointment.customer}</h3>
                         <Badge variant={getStatusVariant(appointment.status)} className="capitalize">
-                          {appointment.status === 'in-progress' ? 'In Progress' : appointment.status}
+                          {appointment.status === 'in-progress' ? 'In Progress' : appointment.statusname}
                         </Badge>
                       </div>
                       <p className="text-sm text-gray-600 mb-1">{appointment.service}</p>
@@ -184,9 +188,9 @@ export default function AdminAppointments() {
           <Card>
             <CardContent className="p-8 text-center">
               <Calendar className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">No Upcoming Appointments</h3>
-              <p className="text-gray-600 mb-4">You're all caught up! No appointments scheduled for the coming days.</p>
-              <Button>Schedule New Appointment</Button>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Không có cuộc hẹn sắp tới</h3>
+              <p className="text-gray-600 mb-4">Bạn đã cập nhật đầy đủ rồi! Không có lịch hẹn nào cho những ngày tới.</p>
+              <Button>Lên lịch cuộc hẹn mới</Button>
             </CardContent>
           </Card>
         </TabsContent>
@@ -195,8 +199,8 @@ export default function AdminAppointments() {
           <Card>
             <CardContent className="p-8 text-center">
               <Clock className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Past Appointments</h3>
-              <p className="text-gray-600">View and manage your appointment history</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Cuộc hẹn trước đây</h3>
+              <p className="text-gray-600">Xem và quản lý lịch sử cuộc hẹn của bạn</p>
             </CardContent>
           </Card>
         </TabsContent>

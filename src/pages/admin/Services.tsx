@@ -76,12 +76,12 @@ export default function AdminServices() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Services</h1>
-          <p className="text-gray-600">Manage your service offerings and pricing</p>
+          <h1 className="text-2xl font-bold text-gray-900">Dịch vụ</h1>
+          <p className="text-gray-600">Quản lý dịch vụ và giá cả của bạn</p>
         </div>
         <Button className="w-full sm:w-auto">
           <Plus className="h-4 w-4 mr-2" />
-          Add Service
+          Thêm Dịch vụ
         </Button>
       </div>
 
@@ -91,7 +91,7 @@ export default function AdminServices() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
-              placeholder="Search services..."
+              placeholder="Tìm kiếm Dịch vụ..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -136,7 +136,7 @@ export default function AdminServices() {
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center text-gray-600">
                   <Clock className="h-4 w-4 mr-1" />
-                  {service.duration} min
+                  {service.duration} phút
                 </div>
                 <div className="flex items-center font-semibold text-green-600">
                   <DollarSign className="h-4 w-4 mr-1" />
@@ -147,7 +147,7 @@ export default function AdminServices() {
               <div className="flex items-center space-x-2 pt-2">
                 <Button variant="outline" size="sm" className="flex-1">
                   <Edit className="h-4 w-4 mr-2" />
-                  Edit
+                  Sửa
                 </Button>
                 <Button variant="outline" size="sm" className="px-3">
                   <Trash2 className="h-4 w-4 text-red-500" />
@@ -161,8 +161,8 @@ export default function AdminServices() {
       {/* Service Categories Summary */}
       <Card>
         <CardHeader>
-          <CardTitle>Service Categories</CardTitle>
-          <CardDescription>Overview of your service offerings by category</CardDescription>
+          <CardTitle>Danh mục dịch vụ</CardTitle>
+          <CardDescription>Tổng quan về các dịch vụ của bạn theo danh mục</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -175,7 +175,7 @@ export default function AdminServices() {
                   <div className="text-2xl font-bold text-gray-900">{activeCount}</div>
                   <div className="text-sm text-gray-600">{category}</div>
                   <div className="text-xs text-gray-500 mt-1">
-                    {categoryServices.length} total
+                    {categoryServices.length} tổng
                   </div>
                 </div>
               )

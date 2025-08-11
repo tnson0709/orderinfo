@@ -29,10 +29,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const navItems = [
     { path: '/admin', icon: LayoutDashboard, label: 'Dashboard', exact: true },
     { path: '/admin/appointments', icon: Calendar, label: 'Appointments' },
-    { path: '/admin/services', icon: Scissors, label: 'Services' },
-    { path: '/admin/customers', icon: Users, label: 'Customers' },
-    { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
-    { path: '/admin/settings', icon: Settings, label: 'Settings' },
+    { path: '/admin/services', icon: Scissors, label: 'Dịch vụ' },
+    { path: '/admin/customers', icon: Users, label: 'Khách hàng' },
+    { path: '/admin/analytics', icon: BarChart3, label: 'Phân tích' },
+    { path: '/admin/settings', icon: Settings, label: 'Cài đặt' },
   ]
 
   const isActive = (path: string, exact = false) => {

@@ -16,10 +16,10 @@ export default function UserLayout({ children }: UserLayoutProps) {
   const currentPath = location.pathname
 
   const navItems = [
-    { path: '/user', icon: Home, label: 'Home', exact: true },
-    { path: '/user/services', icon: Calendar, label: 'Services' },
-    { path: '/user/appointments', icon: Clock, label: 'Bookings' },
-    { path: '/user/profile', icon: User, label: 'Profile' },
+    { path: '/user', icon: Home, label: 'Trang chủ', exact: true },
+    { path: '/user/services', icon: Calendar, label: 'Dịch vụ' },
+    { path: '/user/appointments', icon: Clock, label: 'Đặt chỗ' },
+    { path: '/user/profile', icon: User, label: 'Hồ sơ' },
   ]
 
   const isActive = (path: string, exact = false) => {

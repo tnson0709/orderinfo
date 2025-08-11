@@ -1,6 +1,6 @@
 /**
- * User App services page component
- * Display all available services with categories, search, and filtering
+ * Trang dịch vụ ứng dụng Người dùng
+ * Hiển thị tất cả dịch vụ với danh mục, tìm kiếm và lọc
  */
 import { useState } from 'react'
 import { Link } from 'react-router'
@@ -18,87 +18,87 @@ export default function ServicesPage() {
   const [priceRange, setPriceRange] = useState<string[]>([])
 
   const categories = [
-    { id: 'hair', name: 'Hair Services', count: 8 },
-    { id: 'facial', name: 'Facial Treatments', count: 6 },
-    { id: 'massage', name: 'Massage Therapy', count: 4 },
-    { id: 'nails', name: 'Nail Care', count: 5 },
-    { id: 'body', name: 'Body Treatments', count: 3 }
+    { id: 'hair', name: 'Dịch vụ tóc', count: 8 },
+    { id: 'facial', name: 'Chăm sóc da mặt', count: 6 },
+    { id: 'massage', name: 'Massage trị liệu', count: 4 },
+    { id: 'nails', name: 'Chăm sóc móng', count: 5 },
+    { id: 'body', name: 'Chăm sóc cơ thể', count: 3 }
   ]
 
   const priceRanges = [
-    { id: 'under-50', label: 'Under $50', count: 12 },
-    { id: '50-100', label: '$50 - $100', count: 8 },
-    { id: '100-150', label: '$100 - $150', count: 5 },
-    { id: 'over-150', label: 'Over $150', count: 3 }
+    { id: 'under-50', label: 'Dưới 50.000₫', count: 12 },
+    { id: '50-100', label: '50.000₫ - 100.000₫', count: 8 },
+    { id: '100-150', label: '100.000₫ - 150.000₫', count: 5 },
+    { id: 'over-150', label: 'Trên 150.000₫', count: 3 }
   ]
 
   const services = [
     {
       id: 1,
-      name: 'Classic Hair Cut',
+      name: 'Cắt tóc cơ bản',
       category: 'hair',
-      price: 45,
+      price: 45000,
       duration: 60,
       rating: 4.8,
       reviews: 124,
-      description: 'Professional hair cutting and styling',
+      description: 'Cắt tóc chuyên nghiệp và tạo kiểu',
       image: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/5eaa15c2-b33f-4790-995a-1d0cae6ecf8d.jpg',
       popular: true
     },
     {
       id: 2,
-      name: 'Deep Cleansing Facial',
+      name: 'Chăm sóc da mặt sâu',
       category: 'facial',
-      price: 80,
+      price: 80000,
       duration: 90,
       rating: 4.9,
       reviews: 89,
-      description: 'Intensive facial treatment for deep cleansing',
+      description: 'Liệu trình chăm sóc da mặt chuyên sâu',
       image: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/281e1493-f677-4bdb-9e5e-2434d65ee05a.jpg'
     },
     {
       id: 3,
-      name: 'Relaxation Massage',
+      name: 'Massage thư giãn',
       category: 'massage',
-      price: 120,
+      price: 120000,
       duration: 60,
       rating: 4.7,
       reviews: 156,
-      description: 'Full body relaxation massage therapy',
+      description: 'Liệu trình massage toàn thân thư giãn',
       image: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/6f210efb-f988-4ac9-a902-206b7eb51c72.jpg'
     },
     {
       id: 4,
-      name: 'Gel Manicure',
+      name: 'Sơn gel móng tay',
       category: 'nails',
-      price: 35,
+      price: 35000,
       duration: 45,
       rating: 4.6,
       reviews: 92,
-      description: 'Long-lasting gel manicure service',
+      description: 'Dịch vụ sơn gel móng tay bền đẹp',
       image: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/d877bfbc-2583-4b8b-865a-ce1bc94c05d1.jpg'
     },
     {
       id: 5,
-      name: 'Hair Color & Highlights',
+      name: 'Nhuộm & tạo highlight tóc',
       category: 'hair',
-      price: 150,
+      price: 150000,
       duration: 180,
       rating: 4.9,
       reviews: 67,
-      description: 'Professional hair coloring and highlighting',
+      description: 'Nhuộm tóc chuyên nghiệp và tạo highlight',
       image: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/f13fec59-da2a-4378-bf58-a2015bd404bd.jpg',
       popular: true
     },
     {
       id: 6,
-      name: 'Anti-Aging Facial',
+      name: 'Chăm sóc da chống lão hóa',
       category: 'facial',
-      price: 110,
+      price: 110000,
       duration: 75,
       rating: 4.8,
       reviews: 43,
-      description: 'Advanced anti-aging facial treatment',
+      description: 'Liệu trình chăm sóc da mặt chống lão hóa',
       image: 'https://pub-cdn.sider.ai/u/U07GH2W2594/web-coder/6891fe61964e57bb00419b3b/resource/773952fb-6c95-476b-ad65-b7b618444c5a.jpg'
     }
   ]
@@ -112,10 +112,10 @@ export default function ServicesPage() {
     
     const matchesPrice = priceRange.length === 0 || priceRange.some(range => {
       switch (range) {
-        case 'under-50': return service.price < 50
-        case '50-100': return service.price >= 50 && service.price <= 100
-        case '100-150': return service.price >= 100 && service.price <= 150
-        case 'over-150': return service.price > 150
+        case 'under-50': return service.price < 50000
+        case '50-100': return service.price >= 50000 && service.price <= 100000
+        case '100-150': return service.price >= 100000 && service.price <= 150000
+        case 'over-150': return service.price > 150000
         default: return true
       }
     })
@@ -152,7 +152,7 @@ export default function ServicesPage() {
         <div className="relative">
           <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
           <Input
-            placeholder="Search services..."
+            placeholder="Tìm kiếm dịch vụ..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"
@@ -161,26 +161,26 @@ export default function ServicesPage() {
         
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-gray-900">Services</h1>
-            <Badge variant="secondary">{filteredServices.length} available</Badge>
+            <h1 className="text-xl font-bold text-gray-900">Dịch vụ</h1>
+            <Badge variant="secondary">{filteredServices.length} dịch vụ</Badge>
           </div>
           
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="sm">
                 <Filter className="w-4 h-4 mr-2" />
-                Filter
+                Bộ lọc
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <SheetHeader>
-                <SheetTitle>Filter Services</SheetTitle>
+                <SheetTitle>Lọc dịch vụ</SheetTitle>
               </SheetHeader>
               
               <div className="space-y-6 mt-6">
                 {/* Categories */}
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-3">Categories</h3>
+                  <h3 className="font-semibold text-gray-900 mb-3">Danh mục</h3>
                   <div className="space-y-3">
                     {categories.map((category) => (
                       <div key={category.id} className="flex items-center space-x-2">
@@ -205,7 +205,7 @@ export default function ServicesPage() {
 
                 {/* Price Range */}
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-3">Price Range</h3>
+                  <h3 className="font-semibold text-gray-900 mb-3">Khoảng giá</h3>
                   <div className="space-y-3">
                     {priceRanges.map((range) => (
                       <div key={range.id} className="flex items-center space-x-2">
@@ -229,7 +229,7 @@ export default function ServicesPage() {
                 </div>
 
                 <Button onClick={clearFilters} variant="outline" className="w-full">
-                  Clear All Filters
+                  Xóa tất cả bộ lọc
                 </Button>
               </div>
             </SheetContent>
@@ -255,7 +255,7 @@ export default function ServicesPage() {
                         {service.name}
                         {service.popular && (
                           <Badge className="bg-orange-100 text-orange-700 text-xs">
-                            Popular
+                            Phổ biến
                           </Badge>
                         )}
                       </h3>
@@ -268,17 +268,17 @@ export default function ServicesPage() {
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
-                          <span>{service.duration} min</span>
+                          <span>{service.duration} phút</span>
                         </div>
                       </div>
                     </div>
                     <div className="text-right ml-4">
-                      <p className="font-bold text-lg text-gray-900">${service.price}</p>
+                      <p className="font-bold text-lg text-gray-900">{service.price.toLocaleString()}₫</p>
                     </div>
                   </div>
                   <Link to={`/user/booking/${service.id}`}>
                     <Button size="sm" className="w-full">
-                      Book Now
+                      Đặt lịch
                     </Button>
                   </Link>
                 </div>
@@ -293,10 +293,10 @@ export default function ServicesPage() {
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-6 h-6 text-gray-400" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-600 mb-2">No services found</h3>
-          <p className="text-gray-500 mb-4">Try adjusting your search or filter criteria</p>
+          <h3 className="text-lg font-semibold text-gray-600 mb-2">Không tìm thấy dịch vụ</h3>
+          <p className="text-gray-500 mb-4">Thử thay đổi từ khóa tìm kiếm hoặc bộ lọc</p>
           <Button onClick={clearFilters} variant="outline">
-            Clear Filters
+            Xóa bộ lọc
           </Button>
         </div>
       )}
