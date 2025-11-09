@@ -32,6 +32,7 @@ export function OrderList({ onPrint }: OrderListProps) {
     search,
     page,
     pageSize,
+    total,
     setSearch,
     setPage,
     setPageSize,
@@ -47,58 +48,31 @@ export function OrderList({ onPrint }: OrderListProps) {
 
   const fileRef = useRef<HTMLInputElement | null>(null);
 
-  const filtered = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    if (!q) return orders;
-    return orders.filter((r) => {
-      const hay =
-        [
-          r.orderno,
-          r.productId,
-          r.packcode,
-          r.customer_name,
-          r.taxcode,
-          r.identity_code,
-          r.tel,
-          r.email,
-          r.note,
-          r.partner_code,
-          r.employee_code,
-        ]
-          .filter(Boolean)
-          .join(" ")
-          .toLowerCase() + " " + JSON.stringify(r.licenseInfo ?? {});
-      return hay.includes(q);
-    });
-  }, [orders, search]);
+  // Search is now handled by API, so we just use the current orders
+  const pageRows = Array.isArray(orders) ? orders : [];
 
-  const total = filtered.length;
-  const startIdx = (page - 1) * pageSize;
-  const pageRows = filtered.slice(startIdx, startIdx + pageSize);
-
-  function handleExport() {
-    const data = exportCSV();
-    const csv = ordersToCSV(data);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "orders.csv";
-    a.click();
-    URL.revokeObjectURL(url);
+  async function handleExport() {
+    try {
+      const blob = await exportCSV();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "orders.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Export failed:', error);
+    }
   }
 
-  function handleImport(e: React.ChangeEvent<HTMLInputElement>) {
+  async function handleImport(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const text = String(reader.result || "");
-      const rows = csvToOrders(text);
-      importCSV(rows);
-      setPage(1);
-    };
-    reader.readAsText(file);
+    try {
+      await importCSV(file);
+    } catch (error) {
+      console.error('Import failed:', error);
+    }
     e.currentTarget.value = "";
   }
 
@@ -160,6 +134,7 @@ export function OrderList({ onPrint }: OrderListProps) {
               </thead>
               <tbody>
                 {pageRows.map((r) => {
+                  if (!r) return null; // Ensure r is defined
                   const active = r.order_info_Id === selectedId;
                   return (
                     <tr
@@ -269,4 +244,3 @@ export function OrderList({ onPrint }: OrderListProps) {
     </ContextMenu.Root>
   );
 }
-

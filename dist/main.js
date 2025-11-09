@@ -511,7 +511,7 @@
             }
             return element;
           };
-          function createElement18(type, config, children) {
+          function createElement19(type, config, children) {
             var propName;
             var props2 = {};
             var key = null;
@@ -785,7 +785,7 @@
             }
             return children;
           }
-          function createContext8(defaultValue) {
+          function createContext9(defaultValue) {
             var context = {
               $$typeof: REACT_CONTEXT_TYPE,
               // As a workaround to support multiple concurrent renderers, we categorize
@@ -1127,7 +1127,7 @@
               return dispatcher.useDebugValue(value, formatterFn);
             }
           }
-          function useTransition() {
+          function useTransition2() {
             var dispatcher = resolveDispatcher();
             return dispatcher.useTransition();
           }
@@ -1610,7 +1610,7 @@
                 error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
               }
             }
-            var element = createElement18.apply(this, arguments);
+            var element = createElement19.apply(this, arguments);
             if (element == null) {
               return element;
             }
@@ -1866,7 +1866,7 @@
           exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
           exports.act = act;
           exports.cloneElement = cloneElement$1;
-          exports.createContext = createContext8;
+          exports.createContext = createContext9;
           exports.createElement = createElement$1;
           exports.createFactory = createFactory;
           exports.createRef = createRef;
@@ -1890,7 +1890,7 @@
           exports.useRef = useRef20;
           exports.useState = useState23;
           exports.useSyncExternalStore = useSyncExternalStore;
-          exports.useTransition = useTransition;
+          exports.useTransition = useTransition2;
           exports.version = ReactVersion;
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
@@ -2489,7 +2489,7 @@
               allNativeEvents.add(dependencies[i]);
             }
           }
-          var canUseDOM2 = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
+          var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
           var hasOwnProperty = Object.prototype.hasOwnProperty;
           function typeName(value) {
             {
@@ -5539,7 +5539,7 @@
             return listener;
           }
           var passiveBrowserEventsSupported = false;
-          if (canUseDOM2) {
+          if (canUseDOM) {
             try {
               var options = {};
               Object.defineProperty(options, "passive", {
@@ -7979,13 +7979,13 @@
           var SyntheticWheelEvent = createSyntheticEvent(WheelEventInterface);
           var END_KEYCODES = [9, 13, 27, 32];
           var START_KEYCODE = 229;
-          var canUseCompositionEvent = canUseDOM2 && "CompositionEvent" in window;
+          var canUseCompositionEvent = canUseDOM && "CompositionEvent" in window;
           var documentMode = null;
-          if (canUseDOM2 && "documentMode" in document) {
+          if (canUseDOM && "documentMode" in document) {
             documentMode = document.documentMode;
           }
-          var canUseTextInputEvent = canUseDOM2 && "TextEvent" in window && !documentMode;
-          var useFallbackCompositionData = canUseDOM2 && (!canUseCompositionEvent || documentMode && documentMode > 8 && documentMode <= 11);
+          var canUseTextInputEvent = canUseDOM && "TextEvent" in window && !documentMode;
+          var useFallbackCompositionData = canUseDOM && (!canUseCompositionEvent || documentMode && documentMode > 8 && documentMode <= 11);
           var SPACEBAR_CODE = 32;
           var SPACEBAR_CHAR = String.fromCharCode(SPACEBAR_CODE);
           function registerEvents() {
@@ -8179,7 +8179,7 @@
             return false;
           }
           function isEventSupported(eventNameSuffix) {
-            if (!canUseDOM2) {
+            if (!canUseDOM) {
               return false;
             }
             var eventName = "on" + eventNameSuffix;
@@ -8231,7 +8231,7 @@
             }
           }
           var isInputEventSupported = false;
-          if (canUseDOM2) {
+          if (canUseDOM) {
             isInputEventSupported = isEventSupported("input") && (!document.documentMode || document.documentMode > 9);
           }
           function startWatchingForValueChange(target, targetInst) {
@@ -8663,7 +8663,7 @@
               setOffsets(input, offsets);
             }
           }
-          var skipSelectionChangeEvent = canUseDOM2 && "documentMode" in document && document.documentMode <= 11;
+          var skipSelectionChangeEvent = canUseDOM && "documentMode" in document && document.documentMode <= 11;
           function registerEvents$3() {
             registerTwoPhaseEvent("onSelect", ["focusout", "contextmenu", "dragend", "focusin", "keydown", "keyup", "mousedown", "mouseup", "selectionchange"]);
           }
@@ -8771,7 +8771,7 @@
           };
           var prefixedEventNames = {};
           var style = {};
-          if (canUseDOM2) {
+          if (canUseDOM) {
             style = document.createElement("div").style;
             if (!("AnimationEvent" in window)) {
               delete vendorPrefixes.animationend.animation;
@@ -9287,7 +9287,7 @@
                 possibleRegistrationNames
               });
             };
-            canDiffStyleForHydrationWarning = canUseDOM2 && !document.documentMode;
+            canDiffStyleForHydrationWarning = canUseDOM && !document.documentMode;
             warnForPropDifference = function(propName, serverValue, clientValue) {
               if (didWarnInvalidHydration) {
                 return;
@@ -9417,7 +9417,7 @@
               }
             }
           }
-          function createElement18(type, props2, rootContainerElement, parentNamespace) {
+          function createElement19(type, props2, rootContainerElement, parentNamespace) {
             var isCustomComponentTag;
             var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
             var domElement;
@@ -10287,7 +10287,7 @@
               }
               parentNamespace = hostContextDev.namespace;
             }
-            var domElement = createElement18(type, props2, rootContainerInstance, parentNamespace);
+            var domElement = createElement19(type, props2, rootContainerInstance, parentNamespace);
             precacheFiberNode(internalInstanceHandle, domElement);
             updateFiberProps(domElement, props2);
             return domElement;
@@ -23509,7 +23509,7 @@
             rendererPackageName: "react-dom"
           });
           {
-            if (!foundDevTools && canUseDOM2 && window.top === window.self) {
+            if (!foundDevTools && canUseDOM && window.top === window.self) {
               if (navigator.userAgent.indexOf("Chrome") > -1 && navigator.userAgent.indexOf("Edge") === -1 || navigator.userAgent.indexOf("Firefox") > -1) {
                 var protocol = window.location.protocol;
                 if (/^(https?|file):$/.test(protocol)) {
@@ -24490,7 +24490,7 @@
   // src/main.tsx
   var import_client = __toESM(require_client());
 
-  // node_modules/react-router/dist/development/chunk-UH6JLGW7.mjs
+  // node_modules/react-router/dist/development/chunk-UIGDSWPH.mjs
   var React = __toESM(require_react(), 1);
   var React2 = __toESM(require_react(), 1);
   var React3 = __toESM(require_react(), 1);
@@ -25100,6 +25100,8 @@
   function isRouteErrorResponse(error) {
     return error != null && typeof error.status === "number" && typeof error.statusText === "string" && typeof error.internal === "boolean" && "data" in error;
   }
+  var UninstrumentedSymbol = Symbol("Uninstrumented");
+  var objectProtoNames = Object.getOwnPropertyNames(Object.prototype).sort().join("\0");
   var validMutationMethodsArr = [
     "POST",
     "PUT",
@@ -25252,7 +25254,7 @@
   function useRoutes(routes, locationArg) {
     return useRoutesImpl(routes, locationArg);
   }
-  function useRoutesImpl(routes, locationArg, dataRouterState, future) {
+  function useRoutesImpl(routes, locationArg, dataRouterState, unstable_onError, future) {
     invariant(
       useInRouterContext(),
       // TODO: This error is probably because they somehow have 2 versions of the
@@ -25312,18 +25314,29 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
           params: Object.assign({}, parentParams, match.params),
           pathname: joinPaths([
             parentPathnameBase,
-            // Re-encode pathnames that were decoded inside matchRoutes
-            navigator2.encodeLocation ? navigator2.encodeLocation(match.pathname).pathname : match.pathname
+            // Re-encode pathnames that were decoded inside matchRoutes.
+            // Pre-encode `?` and `#` ahead of `encodeLocation` because it uses
+            // `new URL()` internally and we need to prevent it from treating
+            // them as separators
+            navigator2.encodeLocation ? navigator2.encodeLocation(
+              match.pathname.replace(/\?/g, "%3F").replace(/#/g, "%23")
+            ).pathname : match.pathname
           ]),
           pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : joinPaths([
             parentPathnameBase,
             // Re-encode pathnames that were decoded inside matchRoutes
-            navigator2.encodeLocation ? navigator2.encodeLocation(match.pathnameBase).pathname : match.pathnameBase
+            // Pre-encode `?` and `#` ahead of `encodeLocation` because it uses
+            // `new URL()` internally and we need to prevent it from treating
+            // them as separators
+            navigator2.encodeLocation ? navigator2.encodeLocation(
+              match.pathnameBase.replace(/\?/g, "%3F").replace(/#/g, "%23")
+            ).pathname : match.pathnameBase
           ])
         })
       ),
       parentMatches,
       dataRouterState,
+      unstable_onError,
       future
     );
     if (locationArg && renderedMatches) {
@@ -25393,11 +25406,14 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       };
     }
     componentDidCatch(error, errorInfo) {
-      console.error(
-        "React Router caught the following error during render",
-        error,
-        errorInfo
-      );
+      if (this.props.unstable_onError) {
+        this.props.unstable_onError(error, errorInfo);
+      } else {
+        console.error(
+          "React Router caught the following error during render",
+          error
+        );
+      }
     }
     render() {
       return this.state.error !== void 0 ? /* @__PURE__ */ React2.createElement(RouteContext.Provider, { value: this.props.routeContext }, /* @__PURE__ */ React2.createElement(
@@ -25416,7 +25432,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }
     return /* @__PURE__ */ React2.createElement(RouteContext.Provider, { value: routeContext }, children);
   }
-  function _renderMatches(matches, parentMatches = [], dataRouterState = null, future = null) {
+  function _renderMatches(matches, parentMatches = [], dataRouterState = null, unstable_onError = null, future = null) {
     if (matches == null) {
       if (!dataRouterState) {
         return null;
@@ -25528,7 +25544,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
             component: errorElement,
             error,
             children: getChildren(),
-            routeContext: { outlet: null, matches: matches2, isDataRoute: true }
+            routeContext: { outlet: null, matches: matches2, isDataRoute: true },
+            unstable_onError
           }
         ) : getChildren();
       },
@@ -25638,9 +25655,10 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   function DataRoutes({
     routes,
     future,
-    state
+    state,
+    unstable_onError
   }) {
-    return useRoutesImpl(routes, void 0, state, future);
+    return useRoutesImpl(routes, void 0, state, unstable_onError, future);
   }
   function Route(props2) {
     invariant(
@@ -25740,6 +25758,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         Component: element.props.Component,
         index: element.props.index,
         path: element.props.path,
+        middleware: element.props.middleware,
         loader: element.props.loader,
         action: element.props.action,
         hydrateFallbackElement: element.props.hydrateFallbackElement,
@@ -25864,7 +25883,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }
     return { action, method: method.toLowerCase(), encType, formData, body };
   }
-  var objectProtoNames = Object.getOwnPropertyNames(Object.prototype).sort().join("\0");
+  var objectProtoNames2 = Object.getOwnPropertyNames(Object.prototype).sort().join("\0");
   function invariant2(value, message) {
     if (value === false || value === null || typeof value === "undefined") {
       throw new Error(message);
@@ -26256,7 +26275,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   try {
     if (isBrowser) {
       window.__reactRouterVersion = // @ts-expect-error
-      "7.8.1";
+      "7.9.5";
     }
   } catch (e) {
   }
@@ -29270,7 +29289,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   var React43 = __toESM(require_react(), 1);
 
   // node_modules/@radix-ui/primitive/dist/index.mjs
-  var canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
   function composeEventHandlers2(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
     return function handleEvent(event) {
       originalEventHandler?.(event);
@@ -29588,7 +29606,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     return localDir || globalDir || "ltr";
   }
 
-  // node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
+  // node_modules/@radix-ui/react-menu/node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
   var React21 = __toESM(require_react(), 1);
 
   // node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
@@ -29616,7 +29634,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }, [onEscapeKeyDown, ownerDocument]);
   }
 
-  // node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
+  // node_modules/@radix-ui/react-menu/node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
   var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
   var DISMISSABLE_LAYER_NAME = "DismissableLayer";
   var CONTEXT_UPDATE = "dismissableLayer.update";
@@ -32042,13 +32060,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       const context = usePopperContext(ANCHOR_NAME, __scopePopper);
       const ref = React30.useRef(null);
       const composedRefs = useComposedRefs(forwardedRef, ref);
-      const anchorRef = React30.useRef(null);
       React30.useEffect(() => {
-        const previousAnchor = anchorRef.current;
-        anchorRef.current = virtualRef?.current || ref.current;
-        if (previousAnchor !== anchorRef.current) {
-          context.onAnchorChange(anchorRef.current);
-        }
+        context.onAnchorChange(virtualRef?.current || ref.current);
       });
       return virtualRef ? null : /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Primitive.div, { ...anchorProps, ref: composedRefs });
     }
@@ -32379,7 +32392,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         const ownerWindow = node.ownerDocument.defaultView ?? window;
         const handleAnimationEnd = (event) => {
           const currentAnimationName = getAnimationName(stylesRef.current);
-          const isCurrentAnimation = currentAnimationName.includes(CSS.escape(event.animationName));
+          const isCurrentAnimation = currentAnimationName.includes(event.animationName);
           if (event.target === node && isCurrentAnimation) {
             send("ANIMATION_END");
             if (!prevPresentRef.current) {
@@ -32837,7 +32850,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         return null;
       };
     }
-    targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
+    targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live]")));
     return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
   };
 
@@ -34685,138 +34698,441 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   };
   var create = (createState) => createState ? createImpl(createState) : createImpl;
 
-  // src/utils/storage.ts
-  function getJson(key, fallback) {
+  // src/api/orderApi.ts
+  var API_BASE_URL = "http://localhost/api/api-order/rest-api/api";
+  var API_TIMEOUT = 1e4;
+  async function apiRequest(endpoint, options = {}) {
+    const url = `${API_BASE_URL}${endpoint}`;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
+    const defaultHeaders = {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    };
     try {
-      const raw = localStorage.getItem(key);
-      if (!raw) return fallback;
-      return JSON.parse(raw);
-    } catch {
-      return fallback;
+      console.log(`API Request: ${options.method || "GET"} ${url}`);
+      const response = await fetch(url, {
+        ...options,
+        headers: {
+          ...defaultHeaders,
+          ...options.headers
+        },
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
+      }
+      const data2 = await response.json();
+      console.log(`API Response: ${options.method || "GET"} ${url} - ${response.status}`);
+      return data2;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      if (error instanceof Error) {
+        if (error.name === "AbortError") {
+          throw new Error("Request timeout");
+        }
+        throw error;
+      }
+      throw new Error("Unknown error occurred");
     }
   }
-  function setJson(key, value) {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch {
+  var orderApi = {
+    /**
+     * Fetch orders with pagination and search
+     */
+    async getOrders(params = {}) {
+      const { page = 1, limit = 10, search = "" } = params;
+      try {
+        const queryParams = new URLSearchParams({
+          page: page.toString(),
+          limit: limit.toString(),
+          search
+        }).toString();
+        const response = await apiRequest(`/orders.php?${queryParams}`);
+        return {
+          data: response.data.data || [],
+          // Adjusted to match new structure
+          total: response.data.pagination.total || 0,
+          page: response.data.pagination.page || page,
+          limit: response.data.pagination.limit || limit
+        };
+      } catch (error) {
+        console.error("Failed to fetch orders:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 t\u1EA3i danh s\xE1ch \u0111\u01A1n h\xE0ng");
+      }
+    },
+    /**
+     * Create a new order
+     */
+    async createOrder(orderData) {
+      try {
+        const response = await apiRequest("/orders.php", {
+          method: "POST",
+          body: JSON.stringify(orderData)
+        });
+        return response.data;
+      } catch (error) {
+        console.error("Failed to create order:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 t\u1EA1o \u0111\u01A1n h\xE0ng m\u1EDBi");
+      }
+    },
+    /**
+     * Get order details by ID
+     */
+    async getOrder(id) {
+      try {
+        const response = await apiRequest(`/order.php/${encodeURIComponent(id)}`);
+        return response.data;
+      } catch (error) {
+        console.error("Failed to get order:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 t\u1EA3i th\xF4ng tin \u0111\u01A1n h\xE0ng");
+      }
+    },
+    /**
+     * Update existing order
+     */
+    async updateOrder(id, orderData) {
+      try {
+        const response = await apiRequest(`/order.php/${encodeURIComponent(id)}`, {
+          method: "PUT",
+          body: JSON.stringify(orderData)
+        });
+        return response.data;
+      } catch (error) {
+        console.error("Failed to update order:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 c\u1EADp nh\u1EADt \u0111\u01A1n h\xE0ng");
+      }
+    },
+    /**
+     * Delete order by ID
+     */
+    async deleteOrder(id) {
+      try {
+        await apiRequest(`/order.php/${encodeURIComponent(id)}`, {
+          method: "DELETE"
+        });
+      } catch (error) {
+        console.error("Failed to delete order:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 x\xF3a \u0111\u01A1n h\xE0ng");
+      }
+    },
+    /**
+     * Duplicate an existing order
+     */
+    async duplicateOrder(id) {
+      try {
+        const response = await apiRequest(`/order.php/${encodeURIComponent(id)}`, {
+          method: "POST",
+          body: JSON.stringify({ action: "duplicate" })
+        });
+        return response.data;
+      } catch (error) {
+        console.error("Failed to duplicate order:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 nh\xE2n b\u1EA3n \u0111\u01A1n h\xE0ng");
+      }
+    },
+    /**
+     * Confirm payment for an order
+     */
+    async confirmPayment(id) {
+      try {
+        await apiRequest(`/order.php/${encodeURIComponent(id)}`, {
+          method: "POST",
+          body: JSON.stringify({ action: "confirm_payment" })
+        });
+      } catch (error) {
+        console.error("Failed to confirm payment:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 x\xE1c nh\u1EADn thanh to\xE1n");
+      }
+    },
+    /**
+     * Provision resources for an order
+     */
+    async provisionResource(id) {
+      try {
+        await apiRequest(`/order.php/${encodeURIComponent(id)}`, {
+          method: "POST",
+          body: JSON.stringify({ action: "provision_resource" })
+        });
+      } catch (error) {
+        console.error("Failed to provision resource:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 c\u1EA5p t\xE0i nguy\xEAn");
+      }
+    },
+    /**
+     * Export orders to CSV
+     */
+    async exportOrdersCSV() {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
+        console.log(`API Request: GET ${API_BASE_URL}/export.php`);
+        const response = await fetch(`${API_BASE_URL}/export.php`, {
+          method: "GET",
+          signal: controller.signal,
+          headers: {
+            "Accept": "text/csv"
+          }
+        });
+        clearTimeout(timeoutId);
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        const blob = await response.blob();
+        console.log(`API Response: GET ${API_BASE_URL}/export - ${response.status}`);
+        return blob;
+      } catch (error) {
+        console.error("Failed to export orders:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 xu\u1EA5t kh\u1EA9u \u0111\u01A1n h\xE0ng");
+      }
+    },
+    /**
+     * Import orders from CSV file
+     */
+    async importOrdersCSV(csvFile) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
+        const formData = new FormData();
+        formData.append("file", csvFile);
+        console.log(`API Request: POST ${API_BASE_URL}/import`);
+        const response = await fetch(`${API_BASE_URL}/import`, {
+          method: "POST",
+          signal: controller.signal,
+          body: formData
+        });
+        clearTimeout(timeoutId);
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
+        }
+        const data2 = await response.json();
+        console.log(`API Response: POST ${API_BASE_URL}/import - ${response.status}`);
+        return data2.data;
+      } catch (error) {
+        console.error("Failed to import orders:", error);
+        throw new Error("Kh\xF4ng th\u1EC3 nh\u1EADp kh\u1EA9u \u0111\u01A1n h\xE0ng");
+      }
     }
-  }
+  };
 
   // src/store/orderStore.ts
-  var STORAGE_KEY = "order_info_v1";
-  function getNextOrderNo(rows) {
-    const nums = rows.map((r) => Number(String(r.orderno).replace(/\D/g, ""))).filter((n) => !Number.isNaN(n));
-    const max2 = nums.length ? Math.max(...nums) : 0;
-    return String(max2 + 1).padStart(6, "0");
-  }
-  function createNewOrder(clone) {
-    return {
-      order_info_Id: crypto.randomUUID(),
-      orderno: "",
-      productId: clone?.productId ?? "",
-      packcode: clone?.packcode ?? "",
-      licenseInfo: clone?.licenseInfo ?? {},
-      order_date: clone?.order_date ?? (/* @__PURE__ */ new Date()).toISOString().slice(0, 10),
-      customer_name: clone?.customer_name ?? "",
-      customer_address: clone?.customer_address ?? "",
-      customer_type: clone?.customer_type ?? null,
-      taxcode: clone?.taxcode ?? "",
-      identity_code: clone?.identity_code ?? "",
-      tel: clone?.tel ?? "",
-      email: clone?.email ?? "",
-      note: clone?.note ?? "",
-      amount: clone?.amount ?? null,
-      payment_status: clone?.payment_status ?? 0 /* Unpaid */,
-      payment_tran_no: clone?.payment_tran_no ?? "",
-      payment_type: clone?.payment_type ?? 0 /* Cash */,
-      payment_date: clone?.payment_date ?? null,
-      resource_status: clone?.resource_status ?? 0 /* NotProvisioned */,
-      partner_code: clone?.partner_code ?? "",
-      employee_code: clone?.employee_code ?? ""
-    };
-  }
   var useOrderStore = create((set, get) => ({
     orders: [],
     selectedId: null,
     search: "",
     page: 1,
     pageSize: 10,
-    load: () => {
-      const rows = getJson(STORAGE_KEY, []);
-      set({ orders: rows });
-      const selectedId = get().selectedId;
-      if (!selectedId && rows.length) set({ selectedId: rows[0].order_info_Id });
+    total: 0,
+    loading: false,
+    error: null,
+    /**
+     * Load orders from API with current filters
+     */
+    load: async () => {
+      set({ loading: true, error: null });
+      try {
+        const { data: data2, total } = await orderApi.getOrders({
+          page: get().page,
+          limit: get().pageSize,
+          search: get().search
+        });
+        set({
+          orders: data2,
+          total,
+          loading: false
+        });
+        const selectedId = get().selectedId;
+        if (!selectedId && data2.length) {
+          set({ selectedId: data2[0].order_info_Id });
+        }
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi t\u1EA3i d\u1EEF li\u1EC7u",
+          loading: false
+        });
+      }
     },
-    reload: () => {
+    /**
+     * Reload current page
+     */
+    reload: async () => {
+      await get().load();
+    },
+    /**
+     * Update search query and reload
+     */
+    setSearch: (q) => {
+      set({ search: q, page: 1 });
       get().load();
     },
-    setSearch: (q) => set({ search: q, page: 1 }),
-    setPage: (p) => set({ page: p }),
-    setPageSize: (n) => set({ pageSize: n, page: 1 }),
+    /**
+     * Change page and reload
+     */
+    setPage: (p) => {
+      set({ page: p });
+      get().load();
+    },
+    /**
+     * Change page size and reload
+     */
+    setPageSize: (n) => {
+      set({ pageSize: n, page: 1 });
+      get().load();
+    },
+    /**
+     * Select an order by ID
+     */
     select: (id) => set({ selectedId: id }),
-    add: (data2) => {
-      const rows = [...get().orders];
-      const item = {
-        ...createNewOrder(data2),
-        orderno: getNextOrderNo(rows)
-      };
-      rows.unshift(item);
-      set({ orders: rows, selectedId: item.order_info_Id });
-      setJson(STORAGE_KEY, rows);
-      return item;
-    },
-    update: (id, patch) => {
-      const rows = get().orders.map(
-        (r) => r.order_info_Id === id ? { ...r, ...patch } : r
-      );
-      set({ orders: rows });
-      setJson(STORAGE_KEY, rows);
-    },
-    remove: (id) => {
-      const rows = get().orders.filter((r) => r.order_info_Id !== id);
-      let selectedId = get().selectedId;
-      if (selectedId === id) selectedId = rows[0]?.order_info_Id ?? null;
-      set({ orders: rows, selectedId });
-      setJson(STORAGE_KEY, rows);
-    },
-    duplicate: (id) => {
-      const source = get().orders.find((r) => r.order_info_Id === id);
-      if (!source) return null;
-      const rows = [...get().orders];
-      const dup = createNewOrder(source);
-      dup.orderno = getNextOrderNo(rows);
-      rows.unshift(dup);
-      set({ orders: rows, selectedId: dup.order_info_Id });
-      setJson(STORAGE_KEY, rows);
-      return dup;
-    },
-    confirmPayment: (id) => {
-      const row = get().orders.find((r) => r.order_info_Id === id);
-      if (!row) return;
-      const now = (/* @__PURE__ */ new Date()).toISOString();
-      get().update(id, {
-        payment_status: 3 /* Paid */,
-        payment_date: now
-      });
-    },
-    provisionResource: (id) => {
-      const row = get().orders.find((r) => r.order_info_Id === id);
-      if (!row) return;
-      get().update(id, { resource_status: 1 /* Provisioned */ });
-    },
-    importCSV: (rows) => {
-      const current = [...get().orders];
-      const byId = new Map(current.map((r) => [r.order_info_Id, r]));
-      for (const r of rows) {
-        byId.set(r.order_info_Id, r);
+    /**
+     * Create new order
+     */
+    add: async (data2) => {
+      try {
+        const newOrder = await orderApi.createOrder(data2);
+        set({
+          orders: [newOrder, ...get().orders],
+          selectedId: newOrder.order_info_Id,
+          total: get().total + 1
+        });
+        return newOrder;
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi t\u1EA1o \u0111\u01A1n h\xE0ng"
+        });
+        throw error;
       }
-      const merged = Array.from(byId.values());
-      set({ orders: merged });
-      setJson(STORAGE_KEY, merged);
     },
-    exportCSV: () => {
-      return get().orders;
+    /**
+     * Update existing order
+     */
+    update: async (id, patch) => {
+      try {
+        const updatedOrder = await orderApi.updateOrder(id, patch);
+        set({
+          orders: get().orders.map(
+            (r) => r.order_info_Id === id ? updatedOrder : r
+          )
+        });
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi c\u1EADp nh\u1EADt \u0111\u01A1n h\xE0ng"
+        });
+        throw error;
+      }
     },
+    /**
+     * Delete order
+     */
+    remove: async (id) => {
+      try {
+        await orderApi.deleteOrder(id);
+        const newOrders = get().orders.filter((r) => r.order_info_Id !== id);
+        let selectedId = get().selectedId;
+        if (selectedId === id) {
+          selectedId = newOrders[0]?.order_info_Id ?? null;
+        }
+        set({
+          orders: newOrders,
+          selectedId,
+          total: get().total - 1
+        });
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi x\xF3a \u0111\u01A1n h\xE0ng"
+        });
+        throw error;
+      }
+    },
+    /**
+     * Duplicate existing order
+     */
+    duplicate: async (id) => {
+      try {
+        const duplicatedOrder = await orderApi.duplicateOrder(id);
+        set({
+          orders: [duplicatedOrder, ...get().orders],
+          selectedId: duplicatedOrder.order_info_Id,
+          total: get().total + 1
+        });
+        return duplicatedOrder;
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi nh\xE2n b\u1EA3n \u0111\u01A1n h\xE0ng"
+        });
+        throw error;
+      }
+    },
+    /**
+     * Confirm payment for order
+     */
+    confirmPayment: async (id) => {
+      try {
+        await orderApi.confirmPayment(id);
+        set({
+          orders: get().orders.map(
+            (r) => r.order_info_Id === id ? { ...r, payment_status: 3 /* Paid */, payment_date: (/* @__PURE__ */ new Date()).toISOString() } : r
+          )
+        });
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi x\xE1c nh\u1EADn thanh to\xE1n"
+        });
+        throw error;
+      }
+    },
+    /**
+     * Provision resources for order
+     */
+    provisionResource: async (id) => {
+      try {
+        await orderApi.provisionResource(id);
+        set({
+          orders: get().orders.map(
+            (r) => r.order_info_Id === id ? { ...r, resource_status: 1 /* Provisioned */ } : r
+          )
+        });
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi c\u1EA5p t\xE0i nguy\xEAn"
+        });
+        throw error;
+      }
+    },
+    /**
+     * Import orders from CSV file
+     */
+    importCSV: async (file) => {
+      try {
+        const result = await orderApi.importOrdersCSV(file);
+        await get().load();
+        return result;
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi nh\u1EADp kh\u1EA9u \u0111\u01A1n h\xE0ng"
+        });
+        throw error;
+      }
+    },
+    /**
+     * Export orders to CSV
+     */
+    exportCSV: async () => {
+      try {
+        return await orderApi.exportOrdersCSV();
+      } catch (error) {
+        set({
+          error: error instanceof Error ? error.message : "L\u1ED7i khi xu\u1EA5t kh\u1EA9u \u0111\u01A1n h\xE0ng"
+        });
+        throw error;
+      }
+    },
+    /**
+     * Get currently selected order
+     */
     getSelected: () => {
       const id = get().selectedId;
       if (!id) return null;
@@ -34882,145 +35198,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     ] });
   }
 
-  // src/utils/csv.ts
-  function ordersToCSV(rows) {
-    const headers = [
-      "order_info_Id",
-      "orderno",
-      "productId",
-      "packcode",
-      "licenseInfo",
-      "order_date",
-      "customer_name",
-      "customer_address",
-      "customer_type",
-      "taxcode",
-      "identity_code",
-      "tel",
-      "email",
-      "note",
-      "amount",
-      "payment_status",
-      "payment_tran_no",
-      "payment_type",
-      "payment_date",
-      "resource_status",
-      "partner_code",
-      "employee_code"
-    ];
-    const escape = (v) => {
-      if (v === null || v === void 0) return "";
-      const s = typeof v === "string" ? v : JSON.stringify(v);
-      const needsWrap = /[",\n]/.test(s);
-      const esc = s.replace(/"/g, '""');
-      return needsWrap ? `"${esc}"` : esc;
-    };
-    const lines = [
-      headers.join(","),
-      ...rows.map(
-        (r) => [
-          r.order_info_Id,
-          r.orderno,
-          r.productId,
-          r.packcode,
-          JSON.stringify(r.licenseInfo ?? {}),
-          r.order_date ?? "",
-          r.customer_name ?? "",
-          r.customer_address ?? "",
-          r.customer_type ?? "",
-          r.taxcode ?? "",
-          r.identity_code ?? "",
-          r.tel ?? "",
-          r.email ?? "",
-          r.note ?? "",
-          r.amount ?? "",
-          r.payment_status ?? "",
-          r.payment_tran_no ?? "",
-          r.payment_type ?? "",
-          r.payment_date ?? "",
-          r.resource_status ?? "",
-          r.partner_code ?? "",
-          r.employee_code ?? ""
-        ].map(escape).join(",")
-      )
-    ];
-    return lines.join("\n");
-  }
-  function csvToOrders(csvText) {
-    const lines = csvText.trim().split(/\r?\n/);
-    if (lines.length === 0) return [];
-    const header = parseCsvLine(lines[0]);
-    const rows = [];
-    for (let i = 1; i < lines.length; i++) {
-      const cols = parseCsvLine(lines[i]);
-      const obj = {};
-      header.forEach((h, idx) => obj[h] = cols[idx]);
-      try {
-        if (typeof obj.licenseInfo === "string" && obj.licenseInfo) {
-          obj.licenseInfo = JSON.parse(obj.licenseInfo);
-        }
-      } catch {
-      }
-      const amountNum = typeof obj.amount === "string" && obj.amount !== "" ? Number(obj.amount) : null;
-      rows.push({
-        order_info_Id: String(obj.order_info_Id || crypto.randomUUID()),
-        orderno: String(obj.orderno || ""),
-        productId: String(obj.productId || ""),
-        packcode: String(obj.packcode || ""),
-        licenseInfo: obj.licenseInfo ?? {},
-        order_date: obj.order_date ? String(obj.order_date) : null,
-        customer_name: obj.customer_name ? String(obj.customer_name) : "",
-        customer_address: obj.customer_address ? String(obj.customer_address) : "",
-        customer_type: obj.customer_type !== "" && obj.customer_type !== void 0 ? Number(obj.customer_type) : null,
-        taxcode: obj.taxcode ? String(obj.taxcode) : "",
-        identity_code: obj.identity_code ? String(obj.identity_code) : "",
-        tel: obj.tel ? String(obj.tel) : "",
-        email: obj.email ? String(obj.email) : "",
-        note: obj.note ? String(obj.note) : "",
-        amount: amountNum,
-        payment_status: obj.payment_status !== "" && obj.payment_status !== void 0 ? Number(obj.payment_status) : 0,
-        payment_tran_no: obj.payment_tran_no ? String(obj.payment_tran_no) : "",
-        payment_type: obj.payment_type !== "" && obj.payment_type !== void 0 ? Number(obj.payment_type) : 0,
-        payment_date: obj.payment_date ? String(obj.payment_date) : null,
-        resource_status: obj.resource_status !== "" && obj.resource_status !== void 0 ? Number(obj.resource_status) : 0,
-        partner_code: obj.partner_code ? String(obj.partner_code) : "",
-        employee_code: obj.employee_code ? String(obj.employee_code) : ""
-      });
-    }
-    return rows;
-  }
-  function parseCsvLine(line) {
-    const result = [];
-    let current = "";
-    let inQuotes = false;
-    for (let i = 0; i < line.length; i++) {
-      const ch = line[i];
-      if (inQuotes) {
-        if (ch === '"') {
-          if (line[i + 1] === '"') {
-            current += '"';
-            i++;
-          } else {
-            inQuotes = false;
-          }
-        } else {
-          current += ch;
-        }
-      } else {
-        if (ch === '"') {
-          inQuotes = true;
-        } else if (ch === ",") {
-          result.push(current);
-          current = "";
-        } else {
-          current += ch;
-        }
-      }
-    }
-    result.push(current);
-    return result;
-  }
-
   // src/components/orders/OrderList.tsx
   var import_jsx_runtime17 = __toESM(require_jsx_runtime());
   function OrderList({ onPrint }) {
@@ -35029,6 +35206,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       search,
       page,
       pageSize,
+      total,
       setSearch,
       setPage,
       setPageSize,
@@ -35042,51 +35220,28 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       exportCSV
     } = useOrderStore();
     const fileRef = (0, import_react9.useRef)(null);
-    const filtered = (0, import_react9.useMemo)(() => {
-      const q = search.trim().toLowerCase();
-      if (!q) return orders;
-      return orders.filter((r) => {
-        const hay = [
-          r.orderno,
-          r.productId,
-          r.packcode,
-          r.customer_name,
-          r.taxcode,
-          r.identity_code,
-          r.tel,
-          r.email,
-          r.note,
-          r.partner_code,
-          r.employee_code
-        ].filter(Boolean).join(" ").toLowerCase() + " " + JSON.stringify(r.licenseInfo ?? {});
-        return hay.includes(q);
-      });
-    }, [orders, search]);
-    const total = filtered.length;
-    const startIdx = (page - 1) * pageSize;
-    const pageRows = filtered.slice(startIdx, startIdx + pageSize);
-    function handleExport() {
-      const data2 = exportCSV();
-      const csv = ordersToCSV(data2);
-      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "orders.csv";
-      a.click();
-      URL.revokeObjectURL(url);
+    const pageRows = Array.isArray(orders) ? orders : [];
+    async function handleExport() {
+      try {
+        const blob = await exportCSV();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "orders.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error("Export failed:", error);
+      }
     }
-    function handleImport(e) {
+    async function handleImport(e) {
       const file = e.target.files?.[0];
       if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        const text = String(reader.result || "");
-        const rows = csvToOrders(text);
-        importCSV(rows);
-        setPage(1);
-      };
-      reader.readAsText(file);
+      try {
+        await importCSV(file);
+      } catch (error) {
+        console.error("Import failed:", error);
+      }
       e.currentTarget.value = "";
     }
     function paymentStatusBadge(s) {
@@ -35139,6 +35294,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
           ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("tbody", { children: [
             pageRows.map((r) => {
+              if (!r) return null;
               const active = r.order_info_Id === selectedId;
               return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
                 "tr",
@@ -35681,22 +35837,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     } = useOrderStore();
     (0, import_react12.useEffect)(() => {
       load();
-      if (!useOrderStore.getState().orders.length) {
-        add({
-          productId: "PROD-A",
-          packcode: "BASIC",
-          customer_name: "Nguy\u1EC5n V\u0103n A",
-          amount: 15e5,
-          note: "\u0110\u01A1n m\u1EABu"
-        });
-        add({
-          productId: "PROD-B",
-          packcode: "PRO",
-          customer_name: "C\xF4ng ty B",
-          amount: 52e5
-        });
-        reload();
-      }
     }, []);
     function handleAdd() {
       const row = add({});
@@ -35857,10 +35997,10 @@ react/cjs/react-jsx-runtime.development.js:
    * LICENSE file in the root directory of this source tree.
    *)
 
-react-router/dist/development/chunk-UH6JLGW7.mjs:
+react-router/dist/development/chunk-UIGDSWPH.mjs:
 react-router/dist/development/index.mjs:
   (**
-   * react-router v7.8.1
+   * react-router v7.9.5
    *
    * Copyright (c) Remix Software Inc.
    *

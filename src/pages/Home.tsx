@@ -30,22 +30,22 @@ export default function HomePage() {
   useEffect(() => {
     load();
     // Seed some demo data if empty for better first impression
-    if (!useOrderStore.getState().orders.length) {
-      add({
-        productId: "PROD-A",
-        packcode: "BASIC",
-        customer_name: "Nguyễn Văn A",
-        amount: 1500000,
-        note: "Đơn mẫu",
-      });
-      add({
-        productId: "PROD-B",
-        packcode: "PRO",
-        customer_name: "Công ty B",
-        amount: 5200000,
-      });
-      reload();
-    }
+    // if (!useOrderStore.getState().orders.length) {
+    //   add({
+    //     productId: "PROD-A",
+    //     packcode: "BASIC",
+    //     customer_name: "Nguyễn Văn A",
+    //     amount: 1500000,
+    //     note: "Đơn mẫu",
+    //   });
+    //   add({
+    //     productId: "PROD-B",
+    //     packcode: "PRO",
+    //     customer_name: "Công ty B",
+    //     amount: 5200000,
+    //   });
+    //   reload();
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
